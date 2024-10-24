@@ -21,7 +21,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["unibiz.shop", "www.unibiz.shop", "127.0.0.1"]
 
-
 CSRF_TRUSTED_ORIGINS = ["https://unibiz.shop", "https://www.unibiz.shop"]
 
 # Application definition
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -129,3 +129,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://web-app-observatorio.vercel.app",
+]
