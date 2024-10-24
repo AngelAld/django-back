@@ -25,7 +25,7 @@ class PostOneViewSet(ModelViewSet):
     serializer_class = PostDetailSerializer
     http_method_names = ["get"]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ["slug"]
+    lookup_field = "slug"
 
 
 class PostAllViewSet(ModelViewSet):
@@ -38,6 +38,7 @@ class PostAllViewSet(ModelViewSet):
     ordering = ("-date",)
     ordering_fields = ("date", "title")
     search_fields = ["title", "content"]
+
 
 class AreaAllViewSet(ModelViewSet):
     queryset = Area.objects.all()
