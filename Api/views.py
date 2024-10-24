@@ -39,13 +39,18 @@ class PostAllViewSet(ModelViewSet):
     ordering_fields = ("date", "title")
     search_fields = ["title", "content"]
 
+class AreaAllViewSet(ModelViewSet):
+    queryset = Area.objects.all()
+    serializer_class = AreaSerializer
+    http_method_names = ["get"]
+
 
 # authenticated views
 class AreaViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Area.objects.all()
     serializer_class = AreaSerializer
-    http_method_names = ["get", "post", "put", "delete"]
+    http_method_names = ["post", "put", "delete"]
 
 
 class PostViewSet(ModelViewSet):
