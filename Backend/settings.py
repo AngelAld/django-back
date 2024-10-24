@@ -19,7 +19,7 @@ SECRET_KEY = "django-insecure-%!o5%0)_5mc#=-d8h^j^ll8+rh=+v+v9(abxj8l7$s-8q3bkla
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["unibiz.shop", "www.unibiz.shop", "127.0.0.1"]
+ALLOWED_HOSTS = ["unibiz.shop", "www.unibiz.shop", "127.0.0.1", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = ["https://unibiz.shop", "https://www.unibiz.shop"]
 
