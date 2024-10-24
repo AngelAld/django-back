@@ -51,7 +51,7 @@ class AreaViewSet(ModelViewSet):
     # permission_classes = [IsAuthenticated]
     queryset = Area.objects.all()
     serializer_class = AreaSerializer
-    http_method_names = ["post", "put", "delete"]
+    http_method_names = ["get", "post", "put", "delete"]
 
 
 class PostViewSet(ModelViewSet):
