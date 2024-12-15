@@ -19,26 +19,40 @@ SECRET_KEY = "django-insecure-%!o5%0)_5mc#=-d8h^j^ll8+rh=+v+v9(abxj8l7$s-8q3bkla
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["unibiz.shop", "www.unibiz.shop", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = [
+    "unibiz.shop",
+    "www.unibiz.shop",
+    "127.0.0.1",
+    "localhost",
+]
 
-CSRF_TRUSTED_ORIGINS = ["https://unibiz.shop", "https://www.unibiz.shop"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://unibiz.shop",
+    "https://www.unibiz.shop",
+]
 
 # Application definition
 
-INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-] + [
-    "django_filters",
-    "rest_framework",
-    "corsheaders",
-    "Api",
-    "Post",
-]
+INSTALLED_APPS = (
+    [
+        "django.contrib.admin",
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
+        "django.contrib.sessions",
+        "django.contrib.messages",
+        "django.contrib.staticfiles",
+    ]
+    + [
+        "django_filters",
+        "rest_framework",
+        "corsheaders",
+        "Api",
+        "Post",
+    ]
+    + [  # esto se pone al final para que no de error
+        "django_cleanup.apps.CleanupConfig",
+    ]
+)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -136,3 +150,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://web-app-observatorio.vercel.app",
     "https://web-app-observatorio-git-develop-mvcsystems-projects.vercel.app",
 ]
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    )
+}

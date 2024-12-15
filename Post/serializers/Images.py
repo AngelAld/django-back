@@ -1,10 +1,11 @@
-from rest_framework.serializers import ModelSerializer, StringRelatedField
+from rest_framework.serializers import ModelSerializer
 from Post.models import Image
+from drf_extra_fields.fields import Base64ImageField
 
 
 class ImageSerializer(ModelSerializer):
-    url = StringRelatedField(read_only=True)
+    image = Base64ImageField()
 
     class Meta:
         model = Image
-        fields = ["id", "url", "is_cover"]
+        fields = ["image", "is_cover"]
