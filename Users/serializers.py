@@ -21,7 +21,9 @@ class UserSerializer(serializers.ModelSerializer):
         many=True,
         source="groups",
     )
-    password = serializers.CharField(write_only=True, required=False)
+    password = serializers.CharField(
+        write_only=True, required=False, allow_blank=True, allow_null=True
+    )
 
     class Meta:
         model = User
