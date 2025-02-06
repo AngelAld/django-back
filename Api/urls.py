@@ -13,6 +13,7 @@ from Api.views import (
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
+from Users.views import UserViewSet, GroupViewSet as UsersGroupViewSet
 
 router = DefaultRouter()
 
@@ -24,6 +25,8 @@ router.register(r"post-crud-list", PostCrudListViewSet, basename="post")
 router.register(r"post-crud", PostCrudViewSet, basename="post-crud")
 router.register(r"login", LoginView, basename="login")
 router.register(r"groups", GroupViewSet, basename="group")
+router.register(r"users", UserViewSet, basename="user")
+router.register(r"groups-admin", UsersGroupViewSet, basename="admin-group")
 urlpatterns = [
     path("", include(router.urls)),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
