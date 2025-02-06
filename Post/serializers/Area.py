@@ -1,15 +1,5 @@
 from rest_framework import serializers
 from Post.models import Area
-from django.contrib.auth.models import Group
-
-
-class GroupSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Group
-        fields = [
-            "id",
-            "name",
-        ]
 
 
 class AreaSerializer(serializers.ModelSerializer):

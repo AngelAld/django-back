@@ -30,7 +30,7 @@ class Post(models.Model):
     published = models.BooleanField(default=False)
 
     @property
-    def cover(self):
+    def cover(self) -> str | None:
         cover = Image.objects.filter(post=self, is_cover=True).first()
         if cover:
             return cover.image.url

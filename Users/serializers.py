@@ -15,10 +15,11 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    groups = GroupSerializer(many=True)
+    groups = GroupSerializer(many=True, read_only=True)
     group_ids = serializers.PrimaryKeyRelatedField(
         queryset=Group.objects.all(),
         many=True,
+        source="groups",
     )
     password = serializers.CharField(write_only=True, required=False)
 
@@ -36,6 +37,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     @atomic
     def create(self, validated_data):
+        print("*****************")
+        print(validated_data)
+        print("*****************")
         password = validated_data.pop("password")
         if not password:
             raise ValidationError("Password is required")
@@ -47,6 +51,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     @atomic
     def update(self, instance, validated_data):
+        print("*****************")
+        print(validated_data)
+        print("*****************")
         password = validated_data.pop("password", None)
         if password:
             validate_password(password)

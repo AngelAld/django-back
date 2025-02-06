@@ -47,9 +47,11 @@ INSTALLED_APPS = (
     + [
         "django_filters",
         "rest_framework",
+        "drf_spectacular",
         "corsheaders",
-        "Api",
+        "Users",
         "Post",
+        "Auth",
     ]
     + [  # esto se pone al final para que no de error
         "django_cleanup.apps.CleanupConfig",
@@ -121,9 +123,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "es-PE"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/Lima"
 
 USE_I18N = True
 
@@ -157,5 +159,15 @@ CORS_ALLOWED_ORIGINS = [
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+    ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Documentación de la API del Observatorio de Seguridad Ciudadana",
+    "DESCRIPTION": "",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    # OTHER SETTINGS
 }
